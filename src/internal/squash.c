@@ -47,7 +47,7 @@ static squash_info_t squash_info_init(bool recursive) {
 
 // Atomic squashing ---------------------------------------------------
 
-static r_ssize atom_squash(enum r_type kind, squash_info_t info,
+static r_ssize atom_squash(r_type kind, squash_info_t info,
                            r_obj* outer, r_obj* out, r_ssize count,
                            bool (*is_spliceable)(r_obj*), int depth) {
   if (r_typeof(outer) != VECSXP) {
@@ -190,8 +190,8 @@ static void squash_info(squash_info_t* info, r_obj* outer,
   }
 }
 
-static r_obj* squash(enum r_type kind, r_obj* dots, bool (*is_spliceable)(r_obj*), int depth) {
-  bool recursive = kind == VECSXP;
+static r_obj* squash(r_type kind, r_obj* dots, bool (*is_spliceable)(r_obj*), int depth) {
+  bool recursive = (kind == VECSXP);
 
   squash_info_t info = squash_info_init(recursive);
   squash_info(&info, dots, is_spliceable, depth);
@@ -284,7 +284,7 @@ static bool is_spliceable_closure(r_obj* x) {
 
 // Export ------------------------------------------------------------
 
-r_obj* r_squash_if(r_obj* dots, enum r_type kind, bool (*is_spliceable)(r_obj*), int depth) {
+r_obj* r_squash_if(r_obj* dots, r_type kind, bool (*is_spliceable)(r_obj*), int depth) {
   switch (kind) {
   case R_TYPE_logical:
   case R_TYPE_integer:
@@ -299,7 +299,7 @@ r_obj* r_squash_if(r_obj* dots, enum r_type kind, bool (*is_spliceable)(r_obj*),
     return r_null;
   }
 }
-r_obj* ffi_squash_closure(r_obj* dots, enum r_type kind, r_obj* pred, int depth) {
+r_obj* ffi_squash_closure(r_obj* dots, r_type kind, r_obj* pred, int depth) {
   r_obj* prev_pred = clo_spliceable;
   clo_spliceable = KEEP(Rf_lang2(pred, Rf_list2(r_null, r_null)));
 
@@ -311,7 +311,7 @@ r_obj* ffi_squash_closure(r_obj* dots, enum r_type kind, r_obj* pred, int depth)
   return out;
 }
 r_obj* ffi_squash(r_obj* dots, r_obj* type, r_obj* pred, r_obj* depth_) {
-  enum r_type kind = Rf_str2type(CHAR(r_chr_get(type, 0)));
+  r_type kind = (r_type)Rf_str2type(CHAR(r_chr_get(type, 0)));
   int depth = Rf_asInteger(depth_);
 
   is_spliceable_t is_spliceable;

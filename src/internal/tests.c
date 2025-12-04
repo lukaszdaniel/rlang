@@ -26,7 +26,7 @@ const char* tests_df_names_c_strings[TESTS_DF_SIZE] = {
   [TESTS_DF_fn_ptr] = "fn_ptr"
 };
 static
-const enum r_type tests_df_types[TESTS_DF_SIZE] = {
+const r_type tests_df_types[TESTS_DF_SIZE] = {
   [TESTS_DF_desc] = R_TYPE_character,
   [TESTS_DF_fn_ptr] = R_TYPE_list
 };

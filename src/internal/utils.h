@@ -32,7 +32,7 @@ r_obj* nms_are_duplicated(r_obj* nms, bool from_last);
 bool vec_find_first_duplicate(r_obj* x, r_obj* except, r_ssize* index);
 
 static inline
-r_obj* r_vec_coerce(r_obj* x, enum r_type to) {
+r_obj* r_vec_coerce(r_obj* x, r_type to) {
   return Rf_coerceVector(x, to);
 }
 

@@ -60,7 +60,7 @@ r_obj* ffi_alloc_data_frame(r_obj* n_rows, r_obj* names, r_obj* types) {
   r_ssize n_rows_val = r_int_get(n_rows, 0);
   r_obj* df = KEEP(r_alloc_df_list(n_rows_val,
                                    names,
-                                   (enum r_type*) r_int_begin(types),
+                                   (r_type*) r_int_begin(types),
                                    r_length(names)));
   r_init_data_frame(df, n_rows_val);
 
@@ -1056,7 +1056,7 @@ r_obj* ffi_sexp_iterate(r_obj* x, r_obj* fn) {
     }
 
     r_obj* x = p_it->x;
-    enum r_type type = p_it->type;
+    r_type type = p_it->type;
     int depth = p_it->depth;
     r_obj* parent = p_it->parent;
     enum r_sexp_it_relation rel = p_it->rel;

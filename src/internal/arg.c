@@ -249,7 +249,7 @@ r_obj* lazy_wrap_chr(struct r_lazy arg) {
 }
 
 static
-enum r_type arg_match_arg_nm_type(r_obj* arg_nm) {
+r_type arg_match_arg_nm_type(r_obj* arg_nm) {
   switch (r_typeof(arg_nm)) {
   case R_TYPE_string: return R_TYPE_string;
   case R_TYPE_symbol: return R_TYPE_symbol;

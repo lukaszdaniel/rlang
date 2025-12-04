@@ -5,8 +5,8 @@ static r_obj* replace_na_(r_obj* x, r_obj* replacement, int start);
 static r_obj* replace_na_vec_(r_obj* x, r_obj* replacement, int start);
 
 r_obj* ffi_replace_na(r_obj* x, r_obj* replacement) {
-  const enum r_type x_type = r_typeof(x);
-  const enum r_type replacement_type = r_typeof(replacement);
+  const r_type x_type = r_typeof(x);
+  const r_type replacement_type = r_typeof(replacement);
 
   int n = r_length(x);
   int n_replacement = r_length(replacement);

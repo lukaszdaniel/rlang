@@ -4,7 +4,7 @@
 #include <rlang.h>
 
 
-r_obj* r_squash_if(r_obj* dots, enum r_type kind, bool (*is_spliceable)(r_obj*), int depth);
+r_obj* r_squash_if(r_obj* dots, r_type kind, bool (*is_spliceable)(r_obj*), int depth);
 
 
 #endif

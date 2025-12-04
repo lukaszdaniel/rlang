@@ -181,7 +181,7 @@ r_obj* vec_coercer(r_obj* to) {
   case R_TYPE_complex: return rlang_ns_get("legacy_as_complex");
   case R_TYPE_character: return rlang_ns_get("legacy_as_character");
   case RAWSXP: return rlang_ns_get("legacy_as_raw");
-  default: r_abort("No coercion implemented for `%s`", Rf_type2str(r_typeof(to)));
+  default: r_abort("No coercion implemented for `%s`", Rf_type2str_nowarn(r_typeof(to)));
   }
 }
 

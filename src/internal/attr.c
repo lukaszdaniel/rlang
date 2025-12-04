@@ -6,7 +6,7 @@
 
 
 r_obj* ffi_names2(r_obj* x, r_obj* env) {
-  const enum r_type type = r_typeof(x);
+  const r_type type = r_typeof(x);
 
   if (type == R_TYPE_environment) {
     r_abort("Use `env_names()` for environments.");
