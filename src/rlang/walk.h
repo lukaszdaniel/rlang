@@ -92,7 +92,7 @@ struct r_sexp_iterator {
 struct r_sexp_iterator* r_new_sexp_iterator(r_obj* root);
 
 bool r_sexp_next(struct r_sexp_iterator* p_it);
-bool r_sexp_skip(struct r_sexp_iterator* p_it);
+// bool r_sexp_skip(struct r_sexp_iterator* p_it);
 
 
 static inline

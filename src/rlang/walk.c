@@ -311,7 +311,7 @@ enum sexp_iterator_type sexp_iterator_type(r_type type,
   }
 }
 static inline
-bool sexp_has_attrib(enum r_type type, r_obj* x) {
+bool sexp_has_attrib(r_type type, r_obj* x) {
   // Strings have private data stored in attributes
   if (type == R_TYPE_string) {
     return false;
