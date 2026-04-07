@@ -3,7 +3,7 @@ enum sexp_iterator_type sexp_iterator_type(r_type type,
                                            r_obj* x);
 
 static inline
-r_obj* sexp_node_attrib(r_type type, r_obj* x);
+bool sexp_has_attrib(enum r_type type, r_obj* x);
 
 static inline
 r_obj* sexp_node_car(r_type type,
